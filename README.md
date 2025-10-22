@@ -51,15 +51,3 @@ Prueba técnica para OMBIA
 4. Acceder a la aplicación
 
    Abre el navegador en: `http://localhost:5173`
-
-### Configuración inicial de datos
-
-Los datos ya se encuentran cargados dentro de la carpeta de `data` en la raíz del proyecto.
-
-Si desea reiniciar los datos desde la app (front) puede presionar "Reset Parking".
-
-## Instrucciones de ejecución
-
-```bash
-docker-compose up
-```
