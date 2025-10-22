@@ -1,0 +1,20 @@
+{
+  "name": "parking-monorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "docker compose up",
+    "dev:logs": "docker compose logs",
+    "dev:down": "docker compose down",
+    "dev:frontend": "docker compose up frontend",
+    "dev:backend": "docker compose up backend",
+    "dev:postgres": "docker compose up postgres",
+    "db:generate": "pnpm --filter backend db:generate",
+    "db:push": "pnpm --filter backend db:push",
+    "db:seed": "pnpm --filter backend db:seed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
