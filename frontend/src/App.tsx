@@ -2,33 +2,8 @@ import { useState } from "react";
 import { useCars } from "./hooks/useCars";
 import { useSlots } from "./hooks/useSlots";
 import { usePark } from "./hooks/usePark";
-
-interface ParkingSlotProps {
-  id: number;
-  name: string;
-  carParked?: Car | null;
-  waitingCar?: WaitingCar | null;
-  onClick?: () => void;
-  isSelected?: boolean;
-}
-
-interface Car {
-  id: number;
-  name: string;
-  color: string;
-  plate: string;
-}
-
-interface WaitingCar extends Car {
-  slot: number;
-}
-
-interface Slot {
-  id: number;
-  name: string;
-  carParkedId: number | null;
-  carWaitingId: number | null;
-}
+import { ParkingSlot } from "./components/ParkingSlot";
+import type { Slot, Car } from "./types/types";
 
 function App() {
   const { data: slots, isLoading } = useSlots();
@@ -71,6 +46,16 @@ function App() {
       <header className="w-full flex items-center justify-center py-8 px-4">
         <h1 className="text-5xl font-bold text-center">OMBIA Parking</h1>
       </header>
+
+      <div className="text-center font-medium w-fit mx-auto">
+        <p>Los elementos de texto en blanco es el estacionamiento</p>
+        <p className="animate-pulse">
+          Los elementos de texto titilantes son los carros esperando
+        </p>
+        <p className="text-black bg-red-400">
+          Los elementos de texto negro son los carros estacionados
+        </p>
+      </div>
 
       {isLoading || carsLoading ? (
         <div>
@@ -170,34 +155,5 @@ function App() {
     </section>
   );
 }
-
-const ParkingSlot = ({
-  name,
-  onClick = () => {},
-  carParked = null,
-  waitingCar = null,
-  isSelected = false,
-}: ParkingSlotProps) => {
-  return (
-    <div
-      onClick={onClick}
-      className={`flex flex-col w-20 h-20 border relative  items-center justify-center rounded-md cursor-pointer ${
-        !carParked ? "bg-green-500 text-white" : "bg-red-500 text-white"
-      } ${isSelected ? "border-4 border-blue-500" : ""}`}
-    >
-      {waitingCar && (
-        <span className="text-xs font-bold text-white/70 text-center animate-pulse">
-          {waitingCar.name}
-        </span>
-      )}
-      <span className="text-sm font-bold">{name}</span>
-      {carParked && (
-        <span className="text-xs font-bold text-black text-center">
-          {carParked.name.split(" ")[0]}
-        </span>
-      )}
-    </div>
-  );
-};
 
 export default App;
