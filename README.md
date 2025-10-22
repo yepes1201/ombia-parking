@@ -29,17 +29,17 @@ Prueba técnica para OMBIA
    cd ..
    ```
 
+   Levantar los servicios con Docker Compose
+
+   ```bash
+   docker-compose up --build
+   ```
+
    Estando en la raíz ejecutar:
 
    ```bash
    pnpm db:push
    pnpm db:seed
-   ```
-
-3. Levantar los servicios con Docker Compose
-
-   ```bash
-   docker-compose up --build
    ```
 
    Esto iniciará:
@@ -48,6 +48,6 @@ Prueba técnica para OMBIA
    - Backend en `http://localhost:3000`
    - Frontend en `http://localhost:5173`
 
-4. Acceder a la aplicación
+3. Acceder a la aplicación
 
    Abre el navegador en: `http://localhost:5173`
